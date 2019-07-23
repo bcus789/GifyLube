@@ -8,56 +8,45 @@ $(document).ready(function() {
             a.addClass('movie');
             a.attr('data-name', movies[i]);
             a.text(movies[i]);
-            $('#moviePage').append(a);
+            $('#gifPage').append(a);
         }
     }
-    $('#add-movie').on('click', function(event) {
+    $('#add-gif').on('click', function(event) {
         event.preventDefault();
-        var movie = $('#movie-input')
+        var movie = $('#gif-input')
             .val()
             .trim();
         movies.push(movie);
         renderButtons();
     });
+    $('button').on('click', function() {
+        // In this case, the "this" keyword refers to the button that was clicked
+        var person = $(this).attr('data-person');
+        var queryURL =
+            'https://api.giphy.com/v1/gifs/search?q=' +
+            movies +
+            '&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10';
 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        movies + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
-    $.ajax({
+        $.ajax({
             url: queryURL,
-            method: "GET"
-        })
-        .then(function(response) {
+            method: 'GET',})
+            .then(function(response) {
             var results = response.data;
             for (var i = 0; i < results.length; i++) {
+                console.log(results);
 
-                // Only taking action if the photo has an appropriate rating
-                if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
-                    // Creating a div for the gif
-                    var gifDiv = $("<div>");
-
-                    // Storing the result item's rating
+                if (results[i].rating !== 'r' && results[i].rating !== 'pg-13') {
+                    var gifDiv = $('<div>');
                     var rating = results[i].rating;
-
-                    // Creating a paragraph tag with the result item's rating
-                    var p = $("<p>").text("Rating: " + rating);
-
-                    // Creating an image tag
-                    var personImage = $("<img>");
-
-                    // Giving the image tag an src attribute of a proprty pulled off the
-                    // result item
-                    personImage.attr("src", results[i].images.fixed_height.url);
-
-                    // Appending the paragraph and personImage we created to the "gifDiv" div we created
+                    var p = $('<p>').text('Rating: ' + rating);
+                    var personImage = $('<img>');
+                    personImage.attr('src', results[i].images.fixed_height.url);
                     gifDiv.append(p);
                     gifDiv.append(personImage);
-
-                    // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
-                    $("#gifs-appear-here").prepend(gifDiv);
+                    $('#moviePage').prepend(gifDiv);
                 }
             }
-        })
-
+        });
+    });
     renderButtons();
-
-})
+});
