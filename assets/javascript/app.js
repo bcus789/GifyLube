@@ -2,13 +2,13 @@ $(document).ready(function() {
     var gifs = ['Laptop', 'Git Bash', 'Git Hub', 'a noose'];
 
     function renderButtons() {
-        $('#moviePage').empty();
+        $('#gifPlace').empty();
         for (var i = 0; i < gifs.length; i++) {
             var a = $('<button>');
             a.addClass('gif');
             a.attr('data-name', gifs[i]);
             a.text(gifs[i]);
-            $('#moviePage').append(a);
+            $('#gifPlace').append(a);
         }
     }
     $('#add-gif').on('click', function(event) {
@@ -42,7 +42,7 @@ $(document).ready(function() {
                     personImage.attr('src', results[i].images.fixed_height.url);
                     gifDiv.append(p);
                     gifDiv.append(personImage);
-                    $('#moviePage').prepend(gifDiv);
+                    $('#gifLube').prepend(gifDiv);
                 }
             }
         });
