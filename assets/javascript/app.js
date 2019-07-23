@@ -1,32 +1,31 @@
 $(document).ready(function() {
-    var movies = ['Laptop', 'Git Bash', 'Git Hub', 'a noose'];
+    var gifs = ['Laptop', 'Git Bash', 'Git Hub', 'a noose'];
 
     function renderButtons() {
         $('#moviePage').empty();
-        for (var i = 0; i < movies.length; i++) {
+        for (var i = 0; i < gifs.length; i++) {
             var a = $('<button>');
-            a.addClass('movie');
-            a.attr('data-name', movies[i]);
-            a.text(movies[i]);
-            $('#gifPage').append(a);
+            a.addClass('gif');
+            a.attr('data-name', gifs[i]);
+            a.text(gifs[i]);
+            $('#moviePage').append(a);
         }
     }
     $('#add-gif').on('click', function(event) {
         event.preventDefault();
-        var movie = $('#gif-input')
+        var gif = $('#gif-input')
             .val()
             .trim();
-        movies.push(movie);
+        gifs.push(gif);
         renderButtons();
     });
     $('button').on('click', function() {
-        // In this case, the "this" keyword refers to the button that was clicked
         var person = $(this).attr('data-person');
         var queryURL =
             'https://api.giphy.com/v1/gifs/search?q=' +
-            movies +
+            gif +
             '&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10';
-
+            
         $.ajax({
             url: queryURL,
             method: 'GET',})
