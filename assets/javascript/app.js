@@ -18,7 +18,7 @@ $(document).ready(function() {
             .trim();
         gifs.push(gif);
         renderButtons();
-    });
+   
     $('button').on('click', function() {
         var person = $(this).attr('data-person');
         var queryURL =
@@ -47,5 +47,6 @@ $(document).ready(function() {
             }
         });
     });
+});
     renderButtons();
 });
