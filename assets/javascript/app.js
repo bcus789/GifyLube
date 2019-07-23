@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var gifs = ['Laptop', 'Git Bash', 'Git Hub', 'a noose'];
 
+    //creates a button for every gif in the array
     function renderButtons() {
         $('#gifPlace').empty();
         for (var i = 0; i < gifs.length; i++) {
@@ -11,16 +12,21 @@ $(document).ready(function() {
             $('#gifPlace').append(a);
         }
     }
+    //creates a new button based on input as long as there actually is one
     $('#add-gif').on('click', function(event) {
+        if ($("#gif-input").val() == ""){
+            alert("you gotta type something chump");
+          } else {
         event.preventDefault();
         var gif = $('#gif-input')
             .val()
             .trim();
         gifs.push(gif);
-        renderButtons();
-   
+        renderButtons();}
+        
+        
+    
     $('button').on('click', function() {
-        var person = $(this).attr('data-person');
         var queryURL =
             'https://api.giphy.com/v1/gifs/search?q=' +
             gif +
@@ -34,7 +40,7 @@ $(document).ready(function() {
             for (var i = 0; i < results.length; i++) {
                 console.log(results);
 
-                if (results[i].rating !== 'r' && results[i].rating !== 'pg-13') {
+                if (true) {
                     var gifDiv = $('<div>');
                     var rating = results[i].rating;
                     var p = $('<p>').text('Rating: ' + rating);
