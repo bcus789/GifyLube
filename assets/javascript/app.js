@@ -5,11 +5,11 @@ $(document).ready(function() {
     function renderButtons() {
         $('#gifPlace').empty();
         for (var i = 0; i < gifs.length; i++) {
-            var a = $('<button>');
-            a.addClass('gif');
-            a.attr('data-name', gifs[i]);
-            a.text(gifs[i]);
-            $('#gifPlace').append(a);
+            var gifButton = $('<button>');
+            gifButton.addClass('gif');
+            gifButton.attr('data-name', gifs[i]);
+            gifButton.text(gifs[i]);
+            $('#gifPlace').append(gifButton);
         }
     }
     //creates a new button based on input as long as there actually is one
@@ -25,13 +25,14 @@ $(document).ready(function() {
         renderButtons();}
         
         
-    
+    // listens to the button in order to make a request to gify.
     $('button').on('click', function() {
+        var gif = $(this).attr("data-name");
         var queryURL =
             'https://api.giphy.com/v1/gifs/search?q=' +
             gif +
             '&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=2';
-            
+        //ajax query    
         $.ajax({
             url: queryURL,
             method: 'GET',})
@@ -55,4 +56,15 @@ $(document).ready(function() {
     });
 });
     renderButtons();
+$(document).on("click", ".action", displayGifs);
+$(document).on("click", ".image", function(){
+    var state = $(this).attr('data-state');
+    if ( state == 'still'){
+        $(this).attr('src', $(this).data('animate'));
+        $(this).attr('data-state', 'animate');
+    }else{
+        $(this).attr('src', $(this).data('still'));
+        $(this).attr('data-state', 'still');
+    }
+});
 });
