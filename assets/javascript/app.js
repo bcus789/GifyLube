@@ -56,15 +56,4 @@ $(document).ready(function() {
     });
 });
     renderButtons();
-$(document).on("click", ".action", displayGifs);
-$(document).on("click", ".image", function(){
-    var state = $(this).attr('data-state');
-    if ( state == 'still'){
-        $(this).attr('src', $(this).data('animate'));
-        $(this).attr('data-state', 'animate');
-    }else{
-        $(this).attr('src', $(this).data('still'));
-        $(this).attr('data-state', 'still');
-    }
-});
 });
