@@ -12,3 +12,28 @@
 #gifPlace{
     margin-top: 30px;
 }
+body {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+#add-gif{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 3px;
+    font-size: 24px;
+    margin-left: 28px;
+}
+#gif-input{
+    font-size: 18px;
+}
+#input{
+    font-size: 18px;
+    margin-right: 5px;
+}
+.gif{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 3px;
+    font-size: 24px;
+    margin-left: 28px;
+}
