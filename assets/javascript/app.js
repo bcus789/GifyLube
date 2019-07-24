@@ -31,7 +31,7 @@ $(document).ready(function() {
         var queryURL =
             'https://api.giphy.com/v1/gifs/search?q=' +
             gif +
-            '&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=2';
+            '&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10';
         //ajax query    
         $.ajax({
             url: queryURL,
@@ -56,18 +56,4 @@ $(document).ready(function() {
     });
 });
     renderButtons();
-    $('img').on("click", function() {
-        // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-        var state = $(this).attr("data-state");
-        // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-        // Then, set the image's data-state to animate
-        // Else set src to the data-still value
-        if (state === "still") {
-          $(this).attr("src", $(this).attr("data-animate"));
-          $(this).attr("data-state", "animate");
-        } else {
-          $(this).attr("src", $(this).attr("data-still"));
-          $(this).attr("data-state", "still");
-        }
-      });
 });
