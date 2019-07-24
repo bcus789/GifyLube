@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var gifs = ['Laptop', 'Git Bash', 'Git Hub', 'a noose'];
+    var gifs = [];
 
     //creates a button for every gif in the array
     function renderButtons() {
@@ -30,7 +30,7 @@ $(document).ready(function() {
         var queryURL =
             'https://api.giphy.com/v1/gifs/search?q=' +
             gif +
-            '&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10';
+            '&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=2';
             
         $.ajax({
             url: queryURL,
@@ -44,10 +44,10 @@ $(document).ready(function() {
                     var gifDiv = $('<div>');
                     var rating = results[i].rating;
                     var p = $('<p>').text('Rating: ' + rating);
-                    var personImage = $('<img>');
-                    personImage.attr('src', results[i].images.fixed_height.url);
+                    var gifImage = $('<img>');
+                    gifImage.attr("src", results[i].images.fixed_height_small.url)
                     gifDiv.append(p);
-                    gifDiv.append(personImage);
+                    gifDiv.append(gifImage);
                     $('#gifLube').prepend(gifDiv);
                 }
             }
