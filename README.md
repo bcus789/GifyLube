@@ -5,7 +5,7 @@ Get the gifs you want with no strings attached.
 ## Getting Started
 
 https://bcus789.github.io/GifyLube/
-Simply type in a topic you would like to search and hit search. Upon submition a tag will appear. Click the tag to generate the gifs you want. 
+Simply type in a topic you would like to search and hit search. Upon submition, a tag will appear. Click the tag to generate the gifs you want. 
 
 ### Prerequisites
 
