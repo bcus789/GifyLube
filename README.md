@@ -1,5 +1,8 @@
 # GifyLube
 
+![Gify](https://user-images.githubusercontent.com/47612529/70869466-278ad780-1f40-11ea-8d33-d2af93553661.PNG)
+
+
 Get the gifs you want with no strings attached. 
 
 ## Getting Started
